@@ -5,6 +5,8 @@ const DetoxAdapter = require('./DetoxAdapterImpl');
 class DetoxAdapterCircus extends CircusTestEventListenerBase {
   constructor(detox) {
     super();
+
+    this.detox = detox;
     this._adapter = new DetoxAdapter(detox, DetoxAdapterCircus._describeInitError);
   }
 
@@ -17,11 +19,13 @@ class DetoxAdapterCircus extends CircusTestEventListenerBase {
       };
   }
 
-  async beforeEach() {
-    await this._adapter.beforeEach();
+  async onTestStart(event, state) {
+    await this.detox.beforeEach({
+
+    });
   }
 
-  async afterAll() {
+  async onTestDone(event, state) {
     await this._adapter.afterAll();
   }
 

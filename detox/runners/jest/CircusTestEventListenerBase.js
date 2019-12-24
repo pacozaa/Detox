@@ -5,7 +5,7 @@ class CircusTestEventListenerBase {
     this._dispatchMap = {
       sync: {
         'setup': this.onSetup,
-        'include_test_location_in_result': _.noop,
+        'include_test_location_in_result': noop,
         'start_describe_definition': this.onDescribeDefinitionStart,
         'add_hook': this.onAddHook,
         'add_test': this.onAddTest,
